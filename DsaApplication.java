@@ -1,15 +1,10 @@
-import data.Data;
-import sort.InsertionSort;
-import utils.Utils;
+import trees.Tree;
 
 public class DsaApplication {
     public static void main(String[] args) {
-        // Get an array from data
-        int[] arr = Data.generateRandomArray(10);
+        Tree tree = new Tree();
 
-        // Print array from the data
-        Utils.PrintArray(arr);
-
-        InsertionSort.sort(arr);
+        tree.insert(22);
+        tree.insert(23);
     }
 }
