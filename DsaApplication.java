@@ -1,10 +1,13 @@
-import trees.Tree;
+import leetcode.Pairs;
+import utils.Utils;
 
 public class DsaApplication {
     public static void main(String[] args) {
-        Tree tree = new Tree();
+        int[] arr = { 10, 5, 2, 3, -6, 9, 11 };
 
-        tree.insert(22);
-        tree.insert(23);
+        int[] sumPairs = Pairs.sumPairs(arr, 4);
+        Utils.PrintArray(sumPairs);
+
+        Utils.PrintArray(Pairs.sumPairsImproved(arr, 5));
     }
 }
