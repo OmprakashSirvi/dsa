@@ -6,10 +6,11 @@ public class TrappingRainwater {
         int area = 0;
         int h = 0;
         for (int i = 0; i < height.length; i++){
-            for (int j = i; j < height.length; j++){
+            for (int j = i + 1; j < height.length; j++){
                 if (height[j] >= height[i]){
                     processElements = j;
                     h = Math.min(height[j], height[i]);
+                    break;
                 }
             }
             while((i + 1) < processElements){
