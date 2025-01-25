@@ -6,12 +6,12 @@ import (
 )
 
 func main() {
-	arr := []int{7, 1, 3, 2, 4, 5, 6}
-	// arr2 := []int{2,1,4,3,9,6}
+	arr1 := []int{23, 5, 10, 17, 30}
+	arr2 := []int{26, 134, 135, 14, 19}
 	// arr := []int{1, 3, 2, 3, 3}
 	// leetcode.RainWaterSolve(arr)
-
-	fmt.Printf("Result: %v", leetcode.SolveMinSwapToSort(arr))
+	i1, i2 := leetcode.SolveMinDifference(arr1, arr2)
+	fmt.Printf("Result: %v %v", i1, i2)
 
 	// list1 := []int{1, 2, 4}
 	// list2 := []int{2, 10, 22}
