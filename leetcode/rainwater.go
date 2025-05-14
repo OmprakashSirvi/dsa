@@ -13,7 +13,7 @@ func RainwaterSolve(height []int) int {
 		maxEleLeft = height[index]
 		maxEleRight = height[index]
 		tempIndex := index - 1
-		// interate to left side to find the maxElement
+		// iterate to left side to find the maxElement
 		for tempIndex >= 0 {
 			if height[tempIndex] > maxEleLeft {
 				maxEleLeft = height[tempIndex]
@@ -21,7 +21,7 @@ func RainwaterSolve(height []int) int {
 			tempIndex--
 		}
 		// if no element is greater than the current element
-		// then continue to next interation
+		// then continue to next iteration
 		if maxEleLeft <= height[index] {
 			continue
 		}
@@ -34,7 +34,7 @@ func RainwaterSolve(height []int) int {
 			tempIndex++
 		}
 		// if no element is greater than the current element
-		// then continue to next interation
+		// then continue to next iteration
 		if maxEleRight <= height[index] {
 			continue
 		}

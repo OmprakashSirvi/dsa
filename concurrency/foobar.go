@@ -15,10 +15,10 @@ func NewFooBar(n int) *FooBar {
 
 	// Start the execution
 	fb.FooChan <- struct{}{}
-
 	return fb
 }
 
+// Wait until its my turn, do my work, tell the other thread to do its work.
 func (fb *FooBar) Foo(printFoo func()) {
 	for i := 0; i < fb.n; i++ {
 		<-fb.FooChan
