@@ -3,6 +3,7 @@ package main
 import (
 	"dsa/concurrency"
 	"dsa/leetcode"
+	linkedlist "dsa/linkedList"
 	"fmt"
 	"sync"
 )
@@ -40,7 +41,7 @@ func main() {
 	// Wait for the threads to complete execution
 	wg.Wait()
 
-	fmt.Printf("outputs from the threads: %v", outputs)
+	fmt.Printf("outputs from the threads: %v\n", outputs)
 
 	list1 := []int{1, 2, 4}
 	list2 := []int{2, 10, 22}
@@ -62,6 +63,18 @@ func main() {
 			outputs = append(outputs, result)
 			mu.Unlock()
 		},
+		func ()  {
+			list := linkedlist.New()
+			list.Append(1)
+			list.Append(2)
+			list.Append(3)
+			err := list.Insert(1, 1)
+			if err != nil {
+				fmt.Printf("error while inserting element into the list: %v", err)
+				return
+			}
+			fmt.Printf("Elements in linked list: %v\n", list.GetListAsString())
+		},
 	}
 
 	wg.Add(len(problems))
@@ -75,7 +88,7 @@ func main() {
 
 	// Wait for all the problems to finish execution
 	wg.Wait()
-	for _, output := range(outputs) {
+	for _, output := range outputs {
 		fmt.Printf("Problems output: \n\t%v\n", output)
 	}
 }
