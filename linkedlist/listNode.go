@@ -73,13 +73,31 @@ func (l *LinkedList) Insert(v int, pos int) error {
 	return nil
 }
 
+// get string representation of the linked list
 func (l *LinkedList) GetListAsString() string {
-	result := ""
+	resultBuilder := strings.Builder{}
 	cNode := l.head
 	for cNode != nil {
-		result += fmt.Sprintf(" %v ->", cNode.val)
+		resultBuilder.WriteString(fmt.Sprintf(" %v ->", cNode.val))
 		cNode = cNode.next
 	}
-	result = strings.TrimSuffix(result, "->")
+	result := strings.TrimSuffix(resultBuilder.String(), "->")
 	return result
+}
+
+// This is going take O(N) time complexity
+func (l *LinkedList) RemoveLast() {
+	node := l.head
+	// Do not do anything, cannot remove from an empty list
+	if l.size == 0 {
+		return
+	}
+
+	for i := 0; i < l.size-1; i++ {
+		node = node.next
+	}
+
+	// We will have the penultimate node now.
+	node.next = nil
+	l.tail = node
 }
