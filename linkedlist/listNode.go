@@ -31,6 +31,7 @@ func New() *LinkedList {
 	return head
 }
 
+// Create new linked list with an entry: v
 func NewWithVal(v int) *LinkedList {
 	newNode := &LinkedList{&node{val: v, next: nil}, 1, nil}
 	newNode.tail = newNode.head
@@ -52,24 +53,46 @@ func (l *LinkedList) Append(v int) {
 	l.size += 1
 }
 
-// Returns head of the listNode
+func (l *LinkedList) InsertAtHead(v int) {
+	newNode := &node{val: v, next: l.head}
+	if l.size == 0 {
+		l.tail = newNode
+	}
+	l.head = newNode
+	l.size++
+}
+
 func (l *LinkedList) Insert(v int, pos int) error {
 	if pos < 0 {
 		return errors.New("invalid position")
 	}
-	cNode := l.head
-	// Loop for pos number of times..
-	for range make([]struct{}, pos-1) {
-		if cNode == nil {
-			return fmt.Errorf("insertion index out of bounds position: %d with list of size: %d", pos, l.size)
-		}
-		cNode = cNode.next
+	if pos > l.size {
+		return fmt.Errorf("insertion index out of bounds: pos=%d, size=%d", pos, l.size)
 	}
 
-	newNode := node{val: v, next: cNode.next}
-	cNode.next = &newNode
+	// Determining whether this is an append operation
+	if pos == l.size{
+		l.Append(v)
+		return nil
+	}
 
-	l.size += 1
+	// Determine whether to insert at head
+	if pos == 0 {
+		l.InsertAtHead(v)
+		return nil
+	}
+
+	newNode := &node{val: v}
+
+	// Traverse to the node before position
+	current := l.head
+	for i := 0; i < pos-1; i++ {
+		current = current.next
+	}
+
+	newNode.next = current.next
+	current.next = newNode
+	l.size++
 	return nil
 }
 
@@ -85,7 +108,7 @@ func (l *LinkedList) GetListAsString() string {
 	return result
 }
 
-// This is going take O(N) time complexity
+// Remove last element in the list
 func (l *LinkedList) RemoveLast() {
 	node := l.head
 	// Do not do anything, cannot remove from an empty list
@@ -93,11 +116,34 @@ func (l *LinkedList) RemoveLast() {
 		return
 	}
 
-	for i := 0; i < l.size-1; i++ {
+	// Check if we just want to remove head
+	if l.size == 1 {
+		l.RemoveHead()
+		return
+	}
+
+	for i := 0; i < l.size-2; i++ {
 		node = node.next
 	}
 
 	// We will have the penultimate node now.
 	node.next = nil
 	l.tail = node
+	l.size--
+}
+
+// Remove first element in the list
+func (l *LinkedList) RemoveHead() {
+	// If there are not elements in list, then just return
+	if l.size == 0 {
+		return
+	}
+
+	node := l.head.next
+	l.head = node
+	l.size--
+	if l.size == 1 {
+		// Here node will be nil
+		l.tail = nil
+	}
 }
