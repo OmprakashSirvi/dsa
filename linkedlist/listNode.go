@@ -71,7 +71,7 @@ func (l *LinkedList) Insert(v int, pos int) error {
 	}
 
 	// Determining whether this is an append operation
-	if pos == l.size{
+	if pos == l.size {
 		l.Append(v)
 		return nil
 	}
@@ -146,4 +146,33 @@ func (l *LinkedList) RemoveHead() {
 		// Here node will be nil
 		l.tail = nil
 	}
+}
+
+func (l *LinkedList) RemoveElement(pos int) error {
+	if pos < 0 {
+		return errors.New("invalid position")
+	}
+	if pos >= l.size {
+		return fmt.Errorf("deletion at index out of bounds: pos=%d, size=%d", pos, l.size)
+	}
+
+	if pos == 0 {
+		l.RemoveHead()
+		return nil
+	}
+
+	if pos == l.size-1 {
+		l.RemoveLast()
+		return nil
+	}
+
+	node := l.head
+	// Keep traversing till we reach the prev node to the deletion point
+	for i := 0; i < pos-1; i++ {
+		node = node.next
+	}
+	// We are sure that this will not panic
+	node.next = node.next.next
+	l.size--
+	return nil
 }
