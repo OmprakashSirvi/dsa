@@ -68,6 +68,7 @@ func main() {
 			list.Append(1)
 			list.Append(2)
 			list.Append(3)
+			list.RemoveHead()
 			err := list.Insert(1, 1)
 			if err != nil {
 				fmt.Printf("error while inserting element into the list: %v", err)
