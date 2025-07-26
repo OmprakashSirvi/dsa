@@ -74,6 +74,9 @@ func main() {
 				fmt.Printf("error while inserting element into the list: %v", err)
 				return
 			}
+			if list.IsPresent(4) {
+				fmt.Println("element 3 is present")
+			}
 			fmt.Printf("Elements in linked list: %v\n", list.GetListAsString())
 		},
 	}

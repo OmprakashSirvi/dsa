@@ -176,3 +176,15 @@ func (l *LinkedList) RemoveElement(pos int) error {
 	l.size--
 	return nil
 }
+
+func (l *LinkedList) IsPresent(val int) bool {
+	curr := l.head
+	for (curr != nil) {
+		if curr.val == val {
+			return true
+		}
+		curr = curr.next
+	}
+
+	return false
+}
