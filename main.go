@@ -63,11 +63,12 @@ func main() {
 			outputs = append(outputs, result)
 			mu.Unlock()
 		},
-		func ()  {
+		func() {
 			list := linkedlist.New()
 			list.Append(1)
 			list.Append(2)
 			list.Append(3)
+			list.Append(4)
 			list.RemoveHead()
 			err := list.Insert(1, 1)
 			if err != nil {
@@ -78,6 +79,9 @@ func main() {
 				fmt.Println("element 3 is present")
 			}
 			fmt.Printf("Elements in linked list: %v\n", list.GetListAsString())
+			fmt.Printf("middle element of list: %v\n", list.GetMiddle())
+			list.Reverse()
+			fmt.Printf("reversed linked list: %v\n", list.GetListAsString())
 		},
 	}
 

@@ -188,3 +188,36 @@ func (l *LinkedList) IsPresent(val int) bool {
 
 	return false
 }
+
+func (l *LinkedList) GetMiddle() int {
+	curr := l.head
+	loop := l.size / 2
+	for loop > 0 {
+		curr = curr.next
+		loop--
+	}
+
+	return curr.val
+}
+
+// Returns the head of the reverse linked list
+func (l *LinkedList) Reverse() *node {
+	var prev *node
+	curr := l.head
+	if curr == nil {
+		// This current list is empty so returning nil
+		return nil
+	}
+
+	// Loop till current node is empty
+	for curr != nil {
+		next := curr.next
+		curr.next = prev
+		prev = curr
+		curr = next
+	}
+
+	l.tail = l.head
+	l.head = prev
+	return l.head
+}
