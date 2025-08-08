@@ -17,7 +17,7 @@ type LinkedList struct {
 	tail *node
 }
 
-func (l *LinkedList) GetHeadNode() (*node) {
+func (l *LinkedList) GetHeadNode() *node {
 	return l.head
 }
 
@@ -118,7 +118,7 @@ func GetListAsStringFromNode(head *node) string {
 		currNode = currNode.next
 	}
 
-	result := strings.TrimSuffix(resultBuilder.String() , "->")
+	result := strings.TrimSuffix(resultBuilder.String(), "->")
 	return result
 }
 
@@ -250,4 +250,33 @@ func ReverseRec(head *node) *node {
 	head.next = nil
 
 	return newHead
+}
+
+func HasLoop(head *node) bool {
+	fast := head
+	slow := head
+
+	// There should be at-least two values in the list
+	if fast == nil || fast.next == nil {
+		return false
+	}
+
+	for {
+		fast = fast.next.next
+		slow = slow.next
+
+		// make sure we are not in the endgame..
+		if fast == nil || fast.next == nil {
+			return false
+		}
+
+		// Is the value same?
+		if fast.val == slow.val {
+			return true
+		}
+	}
+}
+
+func (l *LinkedList) HasLoop() bool {
+	return HasLoop(l.head)
 }
