@@ -82,6 +82,11 @@ func main() {
 			fmt.Printf("middle element of list: %v\n", list.GetMiddle())
 			list.Reverse()
 			fmt.Printf("reversed linked list: %v\n", list.GetListAsString())
+			list.RemoveHead()
+			fmt.Printf("Elements in linked list before reverse: %v\n", list.GetListAsString())
+			head := list.GetHeadNode()
+			revListHead := linkedlist.ReverseRec(head)
+			fmt.Printf("reverse linked list through recursion: %v\n", linkedlist.GetListAsStringFromNode(revListHead))
 		},
 	}
 

@@ -17,6 +17,14 @@ type LinkedList struct {
 	tail *node
 }
 
+func (l *LinkedList) GetHeadNode() (*node) {
+	return l.head
+}
+
+func (l *LinkedList) Size() int {
+	return l.size
+}
+
 // Returns the first value in list, returns error, if the list is empty
 func (l *LinkedList) GetHeadVal() (int, error) {
 	if l.head == nil {
@@ -98,13 +106,19 @@ func (l *LinkedList) Insert(v int, pos int) error {
 
 // get string representation of the linked list
 func (l *LinkedList) GetListAsString() string {
+	return GetListAsStringFromNode(l.head)
+}
+
+// get strings representation of linked list from the given node
+func GetListAsStringFromNode(head *node) string {
 	resultBuilder := strings.Builder{}
-	cNode := l.head
-	for cNode != nil {
-		resultBuilder.WriteString(fmt.Sprintf(" %v ->", cNode.val))
-		cNode = cNode.next
+	currNode := head
+	for currNode != nil {
+		resultBuilder.WriteString(fmt.Sprintf(" %v ->", currNode.val))
+		currNode = currNode.next
 	}
-	result := strings.TrimSuffix(resultBuilder.String(), "->")
+
+	result := strings.TrimSuffix(resultBuilder.String() , "->")
 	return result
 }
 
@@ -179,7 +193,7 @@ func (l *LinkedList) RemoveElement(pos int) error {
 
 func (l *LinkedList) IsPresent(val int) bool {
 	curr := l.head
-	for (curr != nil) {
+	for curr != nil {
 		if curr.val == val {
 			return true
 		}
@@ -220,4 +234,20 @@ func (l *LinkedList) Reverse() *node {
 	l.tail = l.head
 	l.head = prev
 	return l.head
+}
+
+// Returns the head of the reverse linked list
+func ReverseRec(head *node) *node {
+	// Base case
+	if head == nil || head.next == nil {
+		return head
+	}
+
+	newHead := ReverseRec(head.next)
+
+	front := head.next
+	front.next = head
+	head.next = nil
+
+	return newHead
 }
