@@ -4,6 +4,7 @@ import (
 	"dsa/concurrency"
 	"dsa/leetcode"
 	linkedlist "dsa/linkedList"
+	"dsa/recursion"
 	"fmt"
 	"sync"
 )
@@ -87,6 +88,9 @@ func main() {
 			head := list.GetHeadNode()
 			revListHead := linkedlist.ReverseRec(head)
 			fmt.Printf("reverse linked list through recursion: %v\n", linkedlist.GetListAsStringFromNode(revListHead))
+		},
+		func() {
+			recursion.PrintNum(6, true)
 		},
 	}
 
