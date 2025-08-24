@@ -6,6 +6,7 @@ import (
 	linkedlist "dsa/linkedList"
 	"dsa/recursion"
 	"fmt"
+	"strings"
 	"sync"
 )
 
@@ -90,7 +91,13 @@ func main() {
 			fmt.Printf("reverse linked list through recursion: %v\n", linkedlist.GetListAsStringFromNode(revListHead))
 		},
 		func() {
+			fmt.Println(strings.Repeat("*", 20))
 			recursion.PrintNum(6, true)
+			fmt.Printf("Sum of first 3 numbers: %v\n", recursion.Sum(3))
+			fmt.Printf("10 factorial: %v\n", recursion.Factorial(10))
+			li := []int{1, 2, 3, 4, 5, 6}
+			fmt.Printf("rev of array: %v, is %v\n", recursion.GetString(li), recursion.RevArray(li))
+			fmt.Println(strings.Repeat("*", 20))
 		},
 	}
 
