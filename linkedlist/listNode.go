@@ -280,3 +280,38 @@ func HasLoop(head *node) bool {
 func (l *LinkedList) HasLoop() bool {
 	return HasLoop(l.head)
 }
+
+func (l *LinkedList) StartOfLoop() *node {
+	fast := l.head
+	slow := l.head
+
+	if fast == nil || fast.next == nil {
+		return nil
+	}
+
+	for {
+		fast = fast.next.next
+		slow := slow.next
+
+		// This means we are not in loop
+		if fast == nil || fast.next == nil {
+			return nil
+		}
+
+		if fast.val == slow.val {
+			// from here on we move these pointers one by one..
+			break
+		}
+	}
+
+	fast = l.head
+
+	for {
+		fast = fast.next
+		slow = slow.next
+
+		if fast.val == slow.val {
+			return fast
+		}
+	}
+}
