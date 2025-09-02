@@ -271,7 +271,8 @@ func HasLoop(head *node) bool {
 		}
 
 		// Is the value same?
-		if fast.val == slow.val {
+		// Equality check for two nodes
+		if fast.val == slow.val && fast.next == slow.next {
 			return true
 		}
 	}
@@ -291,14 +292,15 @@ func (l *LinkedList) StartOfLoop() *node {
 
 	for {
 		fast = fast.next.next
-		slow := slow.next
+		slow = slow.next
 
 		// This means we are not in loop
 		if fast == nil || fast.next == nil {
 			return nil
 		}
 
-		if fast.val == slow.val {
+		// Check if the slow and fast pointers are pointing to the same location or not..
+		if fast.val == slow.val && fast.next == slow.next {
 			// from here on we move these pointers one by one..
 			break
 		}
@@ -307,11 +309,12 @@ func (l *LinkedList) StartOfLoop() *node {
 	fast = l.head
 
 	for {
+		if fast.val == slow.val && fast.next == slow.next {
+			return fast
+		}
+
 		fast = fast.next
 		slow = slow.next
 
-		if fast.val == slow.val {
-			return fast
-		}
 	}
 }
