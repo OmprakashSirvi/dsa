@@ -69,8 +69,11 @@ func main() {
 			list := linkedlist.New()
 			list.Append(1)
 			list.Append(2)
-			list.Append(3)
 			list.Append(4)
+			list.Append(6)
+			list.Append(3)
+			list.Append(5)
+			list.Append(10)
 			list.RemoveHead()
 			err := list.Insert(1, 1)
 			if err != nil {
@@ -78,7 +81,7 @@ func main() {
 				return
 			}
 			if list.IsPresent(4) {
-				fmt.Println("element 3 is present")
+				fmt.Println("element 4 is present")
 			}
 			fmt.Printf("Elements in linked list: %v\n", list.GetListAsString())
 			fmt.Printf("middle element of list: %v\n", list.GetMiddle())
@@ -86,9 +89,12 @@ func main() {
 			fmt.Printf("reversed linked list: %v\n", list.GetListAsString())
 			list.RemoveHead()
 			fmt.Printf("Elements in linked list before reverse: %v\n", list.GetListAsString())
-			head := list.GetHeadNode()
-			revListHead := linkedlist.ReverseRec(head)
-			fmt.Printf("reverse linked list through recursion: %v\n", linkedlist.GetListAsStringFromNode(revListHead))
+			fmt.Printf("sorting list: %s\n", list.GetListAsString())
+			list.Sort()
+			fmt.Printf("sorted linked list: %v\n", list.GetListAsString())
+			// head := list.GetHeadNode()
+			// revListHead := linkedlist.ReverseRec(head)
+			// fmt.Printf("reverse linked list through recursion: %v\n", linkedlist.GetListAsStringFromNode(revListHead))
 		},
 		func() {
 			fmt.Println(strings.Repeat("*", 20))

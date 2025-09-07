@@ -318,3 +318,95 @@ func (l *LinkedList) StartOfLoop() *node {
 
 	}
 }
+
+func (l *LinkedList) Sort() *node {
+	sortedHead := l.head.sort()
+	l.head = sortedHead
+	curr := l.head
+
+	for curr.next != nil {
+		curr = curr.next
+	}
+
+	l.tail = curr
+	return sortedHead
+}
+
+func (head *node) sort() *node {
+	// base case
+	if head == nil || head.next == nil {
+		return head
+	}
+
+	slow := head
+	fast := head
+
+	for !(fast.next == nil || fast.next.next == nil) {
+		slow = slow.next
+		fast = fast.next.next
+	}
+
+	// break the list into two halves
+	fast = slow.next
+	slow.next = nil
+	slow = head
+
+	// time.Sleep(3 * time.Second)
+	sortedSlow := slow.sort()
+	sortedFast := fast.sort()
+
+	mergedHead := merge(sortedSlow, sortedFast)
+
+	return mergedHead
+}
+
+// we know that the two list's head is already sorted
+// return the head of the merged list
+func merge(head1 *node, head2 *node) *node {
+	h1n := head1
+	h2n := head2
+	var temp *node
+
+	if head1 == nil {
+		return head2
+	}
+
+	if head2 == nil {
+		return head1
+	}
+
+	// assign temp node to the head of the node which is smaller.
+	if h1n.val <= h2n.val {
+		temp = h1n
+		h1n = h1n.next
+	} else {
+		temp = h2n
+		h2n = h2n.next
+	}
+	retHead := temp
+
+	for {
+		// break conditions
+		if h1n == nil {
+			temp.next = h2n
+			break
+		}
+		if h2n == nil {
+			temp.next = h1n
+			break
+		}
+
+		// merge conditions
+		if h1n.val <= h2n.val {
+			temp.next = h1n
+			h1n = h1n.next
+			temp = temp.next
+		} else {
+			temp.next = h2n
+			h2n = h2n.next
+			temp = temp.next
+		}
+	}
+
+	return retHead
+}
