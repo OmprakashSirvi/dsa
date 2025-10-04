@@ -1,11 +1,13 @@
 package main
 
 import (
+	"dsa/bits"
 	"dsa/concurrency"
 	"dsa/leetcode"
 	linkedlist "dsa/linkedList"
 	"dsa/recursion"
 	"fmt"
+	"strconv"
 	"strings"
 	"sync"
 )
@@ -104,6 +106,17 @@ func main() {
 			li := []int{1, 2, 3, 4, 5, 6}
 			fmt.Printf("rev of array: %v, is %v\n", recursion.GetString(li), recursion.RevArray(li))
 			fmt.Println(strings.Repeat("*", 20))
+		},
+		func() {
+			fmt.Printf("5 (%s) and 6 (%s): %v (%s)\n", strconv.FormatInt(5, 3), strconv.FormatInt(6, 2), 5&6, strconv.FormatInt(5&6, 2))
+			num := int64(127)
+			index := 2
+			fmt.Printf("%v (%s) %vth bit is set?: %v\n", num, strconv.FormatInt(num, index), index, bits.IsBitSet(int(num), index))
+
+			fmt.Printf("is %v pow of 2? : %v\n", num, bits.IsPow2(int(num)))
+			fmt.Printf("the number of set bits in %v is %v\n", num, bits.CountSetBits(int(num)))
+
+			fmt.Printf("dividend: %v, divisor: %v, quotient: %v\n", 10, 3, bits.Divide(10, 3))
 		},
 	}
 
