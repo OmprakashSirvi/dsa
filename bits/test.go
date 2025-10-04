@@ -62,37 +62,7 @@ func Divide(dividend int, divisor int) int {
 	return quotient
 }
 
-// func Divide(dividend int, divisor int) int {
-// 	// We will figure out the largest number which can be removed from the dividend.
-// 	if dividend == divisor {
-// 		return 1
-// 	}
-
-// 	n := int(math.Abs(float64(dividend)))
-// 	quotient := 0
-// 	for {
-// 		// exit condition
-// 		if n < divisor {
-// 			break
-// 		}
-
-// 		count := 0
-// 		for {
-// 			if (divisor * int(math.Pow(2, float64(count)))) > n {
-// 				count--
-// 				break
-// 			}
-// 			count++
-// 		}
-
-// 		n -= divisor * int(math.Pow(2, float64(count)))
-// 		quotient += int(math.Pow(2, float64(count)))
-// 	}
-
-// 	neg := (dividend > 0 && divisor < 0) || (dividend < 0 && dividend > 0)
-// 	if neg {
-// 		return quotient * -1
-// 	}
-
-// 	return quotient
-// }
+func BitsToFlip(a int, b int) int {
+	y := a ^ b
+	return CountSetBits(y)
+}
