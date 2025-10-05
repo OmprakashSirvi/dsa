@@ -66,3 +66,12 @@ func BitsToFlip(a int, b int) int {
 	y := a ^ b
 	return CountSetBits(y)
 }
+
+func SingleNumbers(nums []int) int {
+	x := 0
+	for _, num := range nums {
+		x ^= num
+	}
+
+	return x
+}
