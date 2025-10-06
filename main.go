@@ -6,6 +6,7 @@ import (
 	"dsa/leetcode"
 	linkedlist "dsa/linkedList"
 	"dsa/recursion"
+	"dsa/stack"
 	"fmt"
 	"strconv"
 	"strings"
@@ -117,6 +118,26 @@ func main() {
 			fmt.Printf("the number of set bits in %v is %v\n", num, bits.CountSetBits(int(num)))
 
 			fmt.Printf("dividend: %v, divisor: %v, quotient: %v\n", 10, 3, bits.Divide(10, 3))
+		},
+		func() {
+			fmt.Printf("verifying min stack")
+			mstack := stack.Constructor()
+			mstack.Push(0)
+			mstack.Push(1)
+			mstack.Push(0)
+			mstack.GetMin()
+			mstack.Pop()
+			mstack.GetMin()
+			mstack.Pop()
+			mstack.GetMin()
+			mstack.Pop()
+			mstack.Push(-1)
+			mstack.Push(-2)
+			mstack.Push(-1)
+			mstack.GetMin()
+			mstack.Pop()
+			mstack.GetMin()
+			mstack.Pop()
 		},
 	}
 
