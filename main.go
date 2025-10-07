@@ -139,6 +139,10 @@ func main() {
 			mstack.GetMin()
 			mstack.Pop()
 		},
+		func() {
+			ele := leetcode.NextGreaterElement([]int{4,1,2}, []int{1, 3, 4, 2})
+			fmt.Printf("ele: %v\n", ele)
+		},
 	}
 
 	wg.Add(len(problems))
