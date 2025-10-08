@@ -142,6 +142,9 @@ func main() {
 		func() {
 			ele := leetcode.NextGreaterElement([]int{4,1,2}, []int{1, 3, 4, 2})
 			fmt.Printf("ele: %v\n", ele)
+
+			ele = leetcode.NextGreaterElement2([]int{1,2,3,4,3})
+			fmt.Printf("ele: %v\n", ele)
 		},
 	}
 
