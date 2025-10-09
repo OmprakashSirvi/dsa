@@ -146,6 +146,10 @@ func main() {
 			ele = leetcode.NextGreaterElement2([]int{1,2,3,4,3})
 			fmt.Printf("ele: %v\n", ele)
 		},
+		func() {
+			ele := leetcode.SumSubarrayMins([]int{3, 1, 2, 4})
+			fmt.Printf("ele: %v\n", ele)
+		},
 	}
 
 	wg.Add(len(problems))
