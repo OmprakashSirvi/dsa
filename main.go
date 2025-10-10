@@ -121,7 +121,7 @@ func main() {
 		},
 		func() {
 			fmt.Printf("verifying min stack")
-			mstack := stack.Constructor()
+			mstack := stack.NewMinStack()
 			mstack.Push(0)
 			mstack.Push(1)
 			mstack.Push(0)
@@ -140,6 +140,14 @@ func main() {
 			mstack.Pop()
 		},
 		func() {
+			qStack := stack.Constructor()
+			qStack.Push(1)
+			qStack.Push(2)
+			qStack.Push(3)
+			qStack.Push(4)
+			qStack.Pop()
+		},
+		func() {
 			ele := leetcode.NextGreaterElement([]int{4,1,2}, []int{1, 3, 4, 2})
 			fmt.Printf("ele: %v\n", ele)
 
@@ -148,6 +156,10 @@ func main() {
 		},
 		func() {
 			ele := leetcode.SumSubarrayMins([]int{3, 1, 2, 4})
+			fmt.Printf("ele: %v\n", ele)
+		},
+		func() {
+			ele := leetcode.AsteroidCollision([]int{-2,-2,1,-2})
 			fmt.Printf("ele: %v\n", ele)
 		},
 	}

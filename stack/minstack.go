@@ -5,7 +5,7 @@ type MinStack struct {
 	nums []int
 }
 
-func Constructor() MinStack {
+func NewMinStack() MinStack {
 	return MinStack{min: make([]int, 0), nums: make([]int, 0)}
 }
 

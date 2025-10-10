@@ -33,3 +33,7 @@ func (s *stack) Peek() int {
 func (s *stack) GetStackSize() int {
 	return len(s.nums)
 }
+
+func (s *stack) GetStackArr() []int {
+	return s.nums
+}
