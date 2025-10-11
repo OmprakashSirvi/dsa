@@ -140,12 +140,19 @@ func main() {
 			mstack.Pop()
 		},
 		func() {
-			qStack := stack.Constructor()
+			qStack := stack.NewQStack()
 			qStack.Push(1)
 			qStack.Push(2)
 			qStack.Push(3)
 			qStack.Push(4)
 			qStack.Pop()
+		},
+		func() {
+			sQueue := stack.Constructor()
+			sQueue.Push(1)
+			sQueue.Push(2)
+			sQueue.Push(3)
+			sQueue.Pop()
 		},
 		func() {
 			ele := leetcode.NextGreaterElement([]int{4,1,2}, []int{1, 3, 4, 2})
@@ -160,6 +167,10 @@ func main() {
 		},
 		func() {
 			ele := leetcode.AsteroidCollision([]int{-2,-2,1,-2})
+			fmt.Printf("ele: %v\n", ele)
+		},
+		func() {
+			ele := leetcode.FirstUniqChar("hello")
 			fmt.Printf("ele: %v\n", ele)
 		},
 	}

@@ -53,7 +53,7 @@ type MyStack struct {
 	top int
 }
 
-func Constructor() MyStack {
+func NewQStack() MyStack {
 	return MyStack{queue.NewQueue(), math.MinInt32}
 }
 
