@@ -173,6 +173,11 @@ func main() {
 			ele := leetcode.FirstUniqChar("hello")
 			fmt.Printf("ele: %v\n", ele)
 		},
+		func() {
+			str := "   fly me   to   the moon  "
+			ele := leetcode.LengthOfLastWord(str)
+			fmt.Printf("ele: %v\n", ele)
+		},
 	}
 
 	wg.Add(len(problems))
