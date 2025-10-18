@@ -1,6 +1,6 @@
 package leetcode
 
-func findTheDifference(s string, t string) byte {
+func FindTheDifference(s string, t string) byte {
 	l := make([]int, 26)
 
 	for _, c := range s {

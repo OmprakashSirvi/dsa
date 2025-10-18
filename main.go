@@ -178,6 +178,17 @@ func main() {
 			ele := leetcode.LengthOfLastWord(str)
 			fmt.Printf("ele: %v\n", ele)
 		},
+		func() {
+			l1 := []string{"hoi"}
+			l2 := []string{"noi"}
+
+			fmt.Printf("common strings with least index sum: %v\n", leetcode.FindRestaurant(l1, l2))
+		},
+		func() {
+			l := []int{1, 2, 3, 5, 6, 7, 8, 9, 10}
+			num := 3
+			fmt.Printf("position of %v if was in arr: %v is: %v", num, l, leetcode.SearchInsert(l, num))
+		},
 	}
 
 	wg.Add(len(problems))
