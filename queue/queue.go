@@ -10,11 +10,11 @@ func NewQueue() Queue {
 	return Queue{nums: make([]int, 0)}
 }
 
-func (q *Queue) Push(num int) {
+func (q *Queue) Enqueue(num int) {
 	q.nums = append(q.nums, num)
 }
 
-func (q *Queue) Pop() int {
+func (q *Queue) Dequeue() int {
 	if len(q.nums) == 0 {
 		// queue is empty
 		return math.MinInt32
@@ -24,11 +24,18 @@ func (q *Queue) Pop() int {
 	return top
 }
 
-func (q *Queue) Top() int {
+func (q *Queue) Last() int {
 	if len(q.nums) == 0 {
 		return math.MinInt32
 	}
 	return q.nums[0]
+}
+
+func (q *Queue) First() int {
+	if len(q.nums) == 0 {
+		return math.MinInt32
+	}
+	return q.nums[q.Len() - 1]
 }
 
 func (q *Queue) Empty() bool {

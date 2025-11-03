@@ -58,7 +58,7 @@ func NewQStack() MyStack {
 }
 
 func (this *MyStack) Push(x int) {
-	this.q.Push(x)
+	this.q.Enqueue(x)
 	this.top = x
 }
 
@@ -70,18 +70,18 @@ func (this *MyStack) Pop() int {
 
 	if this.q.Len() == 1 {
 		this.top = math.MinInt32
-		return this.q.Pop()
+		return this.q.Dequeue()
 	}
 	for i := 0; i < this.q.Len()-1; i++ {
-		ele := this.q.Pop()
-		this.q.Push(ele)
+		ele := this.q.Dequeue()
+		this.q.Enqueue(ele)
 		if i == this.q.Len()-2 {
 			// The last element to be push will be assigned as top of the stack
 			this.top = ele
 		}
 	}
 
-	return this.q.Pop()
+	return this.q.Dequeue()
 }
 
 func (this *MyStack) Top() int {

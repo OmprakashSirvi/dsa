@@ -14,7 +14,7 @@ func FirstUniqChar(s string) int {
 			// If the current element is not present in the map
 			// Add that element to the map
 			m[s[i]] = 1
-			q.Push(i)
+			q.Enqueue(i)
 			continue
 		}
 		m[s[i]] = 2
@@ -23,10 +23,10 @@ func FirstUniqChar(s string) int {
 
 	for !q.Empty() {
 		// We have an element which has appeared 1 time
-		if m[s[q.Top()]] == 1 {
-			return q.Top()
+		if m[s[q.Last()]] == 1 {
+			return q.Last()
 		}
-		q.Pop()
+		q.Dequeue()
 	}
 
 	return -1
