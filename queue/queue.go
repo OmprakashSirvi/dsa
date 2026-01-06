@@ -1,9 +1,13 @@
 package queue
 
-import "math"
+import (
+	"math"
+)
 
 type Queue struct {
-	nums []int
+	nums     []int
+	smallest int
+	largest  int
 }
 
 func NewQueue() Queue {
@@ -11,6 +15,17 @@ func NewQueue() Queue {
 }
 
 func (q *Queue) Enqueue(num int) {
+	if q.Len() == 0 {
+		q.largest = num
+		q.smallest = num
+	}
+
+	if num > q.largest {
+		q.largest = num
+	} else {
+		q.smallest = num
+	}
+
 	q.nums = append(q.nums, num)
 }
 
@@ -24,18 +39,18 @@ func (q *Queue) Dequeue() int {
 	return top
 }
 
-func (q *Queue) Last() int {
+func (q *Queue) First() int {
 	if len(q.nums) == 0 {
 		return math.MinInt32
 	}
 	return q.nums[0]
 }
 
-func (q *Queue) First() int {
+func (q *Queue) Last() int {
 	if len(q.nums) == 0 {
 		return math.MinInt32
 	}
-	return q.nums[q.Len() - 1]
+	return q.nums[q.Len()-1]
 }
 
 func (q *Queue) Empty() bool {
@@ -44,4 +59,12 @@ func (q *Queue) Empty() bool {
 
 func (q *Queue) Len() int {
 	return len(q.nums)
+}
+
+func (q *Queue) GetSmallest() int {
+	return q.smallest
+}
+
+func (q *Queue) GetLargest() int {
+	return q.largest
 }

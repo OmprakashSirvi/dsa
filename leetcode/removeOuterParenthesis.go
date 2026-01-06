@@ -1,39 +1,35 @@
 package leetcode
 
-/*
-Create a stack to keep track of the parenthesis depth.
-If the stack is empty and we encounter a open parenthesis, then we have a start of a part of primitive.
-If we encounter a closed parenthesis, then we pop from the stack, and if the stack is empty,
-we append the primitive part to the result string
-*/
+import (
+	"dsa/stack"
+	"strings"
+)
+
 func RemoveOuterParentheses(s string) string {
-	length := 0
-	result := ""
-	prim := ""
+	st := stack.InitStack()
+	var retStr strings.Builder
 
-	for _, c := range s {
-		if c == '(' {
-			// Check if the stack is empty
-			length += 1
-			if length == 1 {
-				continue
+	for _, r := range s {
+		// if it is opening braces, and there is nothing 
+		// in the stack then we just push this and move forward.
+		if r == '(' {
+			st.Push(1)
+			if st.GetStackSize() != 1 {
+				retStr.WriteRune(r)
 			}
-			// The stack was not empty, hence this will count as a part of primitive.
-			prim += string(c)
 			continue
-			// We know we would only receive valid strings, so no need to check for validity
-		} else {
-			prim += string(c)
-			// pop the stack
-			length -= 1
-		}
+		} 
 
-		// If the stack is empty, then we have reached the end of the part primitive.
-		if length == 0 {
-			result += prim
-			prim = ""
+		// closing braces are there..
+
+		if r == ')' {
+			st.Pop()
+			if st.GetStackSize() != 0 {
+				retStr.WriteRune(r)
+			}
+			continue
 		}
 	}
 
-	return result
+	return retStr.String()
 }

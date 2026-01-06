@@ -155,10 +155,10 @@ func main() {
 			sQueue.Pop()
 		},
 		func() {
-			ele := leetcode.NextGreaterElement([]int{4,1,2}, []int{1, 3, 4, 2})
+			ele := leetcode.NextGreaterElement([]int{4, 1, 2}, []int{1, 3, 4, 2})
 			fmt.Printf("ele: %v\n", ele)
 
-			ele = leetcode.NextGreaterElement2([]int{1,2,3,4,3})
+			ele = leetcode.NextGreaterElement2([]int{1, 2, 3, 4, 3})
 			fmt.Printf("ele: %v\n", ele)
 		},
 		func() {
@@ -166,7 +166,7 @@ func main() {
 			fmt.Printf("ele: %v\n", ele)
 		},
 		func() {
-			ele := leetcode.AsteroidCollision([]int{-2,-2,1,-2})
+			ele := leetcode.AsteroidCollision([]int{-2, -2, 1, -2})
 			fmt.Printf("ele: %v\n", ele)
 		},
 		func() {
@@ -188,6 +188,27 @@ func main() {
 			l := []int{1, 2, 3, 5, 6, 7, 8, 9, 10}
 			num := 3
 			fmt.Printf("position of %v if was in arr: %v is: %v", num, l, leetcode.SearchInsert(l, num))
+		},
+		func() {
+			l := []int{4, -2, -3, 4, 1}
+			fmt.Printf("sol: %v", leetcode.SubArrayRanges(l))
+		},
+		func() {
+			counter := leetcode.Constructor()
+			fmt.Printf("counter: %v\n", counter.Ping(642))
+			fmt.Printf("first: %v\n", counter.Ping(1849))
+			fmt.Printf("first: %v\n", counter.Ping(4921))
+			fmt.Printf("first: %v\n", counter.Ping(5936))
+			// fmt.Printf("first: %v\n", counter.Ping(3000))
+			// fmt.Printf("first: %v\n", counter.Ping(3001))
+			// fmt.Printf("first: %v\n", counter.Ping(3002))
+			// fmt.Printf("first: %v\n", counter.Ping(3003))
+		},
+		func() {
+			fmt.Printf("output of removeOuterParenthesis: %s", leetcode.RemoveOuterParentheses("(()()())"))
+		},
+		func() {
+			fmt.Printf("Daily warmer temperatures: %v",leetcode.DailyTemperatures([]int{73,74,75,71,69,72,76,73}))
 		},
 	}
 

@@ -19,7 +19,7 @@ func SumSubarrayMins(arr []int) int {
 
 	// We ask a simple question for the current element.
 	// How many time can it contribute to the sum
-	// we can find this out by finding out how many
+	// we can find this out by finding out how
 	// far is the next or prev smallest element from current index
 
 	// Calculating next smallest number index

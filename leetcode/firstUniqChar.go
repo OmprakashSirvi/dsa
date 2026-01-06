@@ -23,8 +23,8 @@ func FirstUniqChar(s string) int {
 
 	for !q.Empty() {
 		// We have an element which has appeared 1 time
-		if m[s[q.Last()]] == 1 {
-			return q.Last()
+		if m[s[q.First()]] == 1 {
+			return q.First()
 		}
 		q.Dequeue()
 	}
