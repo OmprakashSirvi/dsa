@@ -6,15 +6,14 @@ import (
 )
 
 func SumSubarrayMins(arr []int) int {
-	// [1, 4, 6, 7, 3, 7, 8, 1]
-	// [0, 1, 2, 3, 4, 5, 6, 7]
-
 	// Get the next smallest element for each of these entries.
-
-	// eg: nextMinNums = [-1, 3, 3, 3, 1, 1, 1, -1]
-	// eg: nextMinIndex = [8, 4, 4, 4, 7, 7, 7, 8]
-	// eg: prevMinNums = [-1, 1, 4, 6, 1, 3, 7, -1]
-	// eg: prevMinIndex = [-1, 0, 1, 2, 0, 4, 5, 0]
+	
+	// Example:           [ 1, 4, 6, 7, 3, 7, 8,  1]
+	// eg: nextMinNums =  [-1, 3, 3, 3, 1, 1, 1, -1]
+	// eg: prevMinNums =  [-1, 1, 4, 6, 1, 3, 7, -1]
+	// Indexes:           [ 0, 1, 2, 3, 4, 5, 6,  7]
+	// eg: nextMinIndex = [ 7, 4, 4, 4, 7, 7, 7,  8]
+	// eg: prevMinIndex = [-1, 0, 1, 2, 0, 4, 5, -1]
 	// We start from 0th index.
 
 	// We ask a simple question for the current element.

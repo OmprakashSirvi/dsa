@@ -162,7 +162,7 @@ func main() {
 			fmt.Printf("ele: %v\n", ele)
 		},
 		func() {
-			ele := leetcode.SumSubarrayMins([]int{3, 1, 2, 4})
+			ele := leetcode.SumSubarrayMins([]int{1, 4, 6, 7, 3, 7, 8, 1})
 			fmt.Printf("ele: %v\n", ele)
 		},
 		func() {
@@ -187,11 +187,11 @@ func main() {
 		func() {
 			l := []int{1, 2, 3, 5, 6, 7, 8, 9, 10}
 			num := 3
-			fmt.Printf("position of %v if was in arr: %v is: %v", num, l, leetcode.SearchInsert(l, num))
+			fmt.Printf("position of %v if was in arr: %v is: %v\n", num, l, leetcode.SearchInsert(l, num))
 		},
 		func() {
 			l := []int{4, -2, -3, 4, 1}
-			fmt.Printf("sol: %v", leetcode.SubArrayRanges(l))
+			fmt.Printf("sol sub array ranges sum: %v\n", leetcode.SubArrayRanges(l))
 		},
 		func() {
 			counter := leetcode.Constructor()
@@ -205,10 +205,10 @@ func main() {
 			// fmt.Printf("first: %v\n", counter.Ping(3003))
 		},
 		func() {
-			fmt.Printf("output of removeOuterParenthesis: %s", leetcode.RemoveOuterParentheses("(()()())"))
+			fmt.Printf("output of removeOuterParenthesis: %s\n", leetcode.RemoveOuterParentheses("(()()())"))
 		},
 		func() {
-			fmt.Printf("Daily warmer temperatures: %v",leetcode.DailyTemperatures([]int{73,74,75,71,69,72,76,73}))
+			fmt.Printf("Daily warmer temperatures: %v\n",leetcode.DailyTemperatures([]int{73,74,75,71,69,72,76,73}))
 		},
 	}
 
